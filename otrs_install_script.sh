@@ -186,34 +186,6 @@ InstallOTRS()
 	else
 		echo "Erro ao reiniciar o Mysql.";exit
 	fi
-
-  # Iniciando o Daemon do OTRS
-  su -c "/opt/otrs/bin/otrs.Daemon.pl stop" otrs 1> /dev/null
-  su -c "/opt/otrs/bin/otrs.Daemon.pl start" otrs 1> /dev/null
-
-  # Iniciando a Cron
-  sh ${OTRS_INSTALL_DIR}otrs/bin/Cron.sh start otrs 1> /dev/null
-	echo "OTRS INSTALADO!!!!!!"
-	echo -n "Pressione q para sair do script ou qualquer outra tecla para voltar ao menu inicial..."
-	read TECLA
-	if [ ${TECLA} = "q"]; then
-		exit
-	else
-		MainMenu
-	fi
-}
-
-ConfigureBackup()
-{
-	echo "Backup Configurado (Teste)"
-	echo -n "Pressione q para sair do script ou qualquer outra tecla para voltar ao menu inicial..."
-	read TECLA
-	if [ ${TECLA} = "q"]; then
-		exit
-	else
-		MainMenu
-	fi
-
 }
 
 CallCase()
