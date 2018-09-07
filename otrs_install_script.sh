@@ -6,7 +6,7 @@
 # Sempre recomendamos analisar o script antes de instala-lo!
 
 #Variaveis
-OTRS_VERSION="6.0.6"
+OTRS_VERSION="latest"
 OTRS_INSTALL_DIR="/opt/"
 REQ_PACKAGES="libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libdigest-md5-perl apache2 libapache2-mod-perl2 mysql-server libarchive-zip-perl libxml-libxml-perl libtemplate-perl libyaml-libyaml-perl libdatetime-perl libmail-imapclient-perl"
 MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d/"
