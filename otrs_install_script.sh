@@ -88,7 +88,6 @@ InstallOTRS()
 	#Fazendo o download do pacote do OTRS:
 	echo -n "Baixar arquivo do OTRS....................."
 	cd ${OTRS_INSTALL_DIR}
-	#wget http://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.gz --output-file=${OTRS_INSTALL_DIR}otrs-${OTRS_VERSION}.tar.gz 1> /dev/null
 	wget http://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.gz 1> /dev/null
 	if [ $? != 0 ]; then
 		clear
@@ -129,7 +128,6 @@ InstallOTRS()
 
 	echo -n "Movendo arquivos necessários..............."
 	mv ${OTRS_INSTALL_DIR}otrs/Kernel/Config.pm.dist ${OTRS_INSTALL_DIR}/otrs/Kernel/Config.pm 1> /dev/null
-	# mv ${OTRS_INSTALL_DIR}otrs/Kernel/Config/GenericAgent.pm.dist ${OTRS_INSTALL_DIR}otrs/Kernel/Config/GenericAgent.pm 1> /dev/null
 	if [ $? = 0 ]; then
 		echo "OK"
 	else
@@ -151,7 +149,6 @@ InstallOTRS()
 	echo -n "Configurando e iniciando a crontab........."
 	cd ${OTRS_INSTALL_DIR}otrs/var/cron/ && for foo in *.dist; do cp $foo `basename $foo .dist`; done
 	chown otrs:www-data /opt/otrs/var/cron/otrs_daemon
-	#sh ${OTRS_INSTALL_DIR}otrs/bin/Cron.sh start otrs 1> /dev/null
 	if [ $? = 0 ]; then
 		echo "OK"
 	else
