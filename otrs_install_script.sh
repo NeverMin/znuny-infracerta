@@ -5,6 +5,7 @@
 # Desenvolvido por Infracerta Consultoria
 # Sempre recomendamos analisar o script antes de instala-lo!
 
+
 #Variaveis
 # Coloque a versão do OTRS que deseja instalar na variavel abaixo
 OTRS_VERSION="6.0.10"
