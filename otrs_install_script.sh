@@ -190,7 +190,7 @@ InstallOTRS()
 CallCase()
 {
 	case "$OPTION" in
-        1) BasicCheck
+    1) BasicCheck
 		;;
 		2) InstallREQPKG
 		;;
