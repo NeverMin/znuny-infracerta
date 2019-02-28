@@ -17,3 +17,7 @@ chmod +x otrs_ubuntu_script.sh
 ```
 sh otrs_ubuntu_scrip.sh
 ```
+
+* Siga as etapas até finalizar a instalação
+* 
+* Acesse a url do servidor para finalizar a configuração (ex: http://ipdoservidor/otrs/install.pl)
