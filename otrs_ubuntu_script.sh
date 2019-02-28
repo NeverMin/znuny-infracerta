@@ -11,8 +11,7 @@
 OTRS_VERSION="6.0.16"
 OTRS_INSTALL_DIR="/opt/"
 REQ_PACKAGES="libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libdigest-md5-perl apache2 libapache2-mod-perl2 mysql-server libarchive-zip-perl libxml-libxml-perl libtemplate-perl libyaml-libyaml-perl libdatetime-perl libmail-imapclient-perl"
-MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d/"
-MYSQL_CUSTOM_FILE="custom_options.cnf"
+MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d"
 
 MainMenu()
 {
@@ -171,7 +170,7 @@ InstallOTRS()
 
 	#Alterando o tamanho do arquivo do log do innodb:
 	echo -n "Alterando parametros do Mysql.............."
-		sed -i "s/.*max_allowed_packet.*/max_allowed_packet = 128M/" /etc/mysql/mysql.conf.d/mysqld.cnf
+		sed -i "s/.*max_allowed_packet.*/max_allowed_packet = 128M/" ${MYSQL_CONF_DIR}/mysqld.cnf
 	if [ $? = 0 ]; then
 		echo "OK"
 	else
