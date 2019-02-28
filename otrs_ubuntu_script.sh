@@ -171,8 +171,7 @@ InstallOTRS()
 
 	#Alterando o tamanho do arquivo do log do innodb:
 	echo -n "Alterando parametros do Mysql.............."
-		echo -e "[mysqld] \nmax_allowed_packet=128M \ninnodb_log_file_size = 536870912 \ncharacter-set-server=utf8 \ncollation-server=utf8_general_ci " > ${MYSQL_CONF_DIR}${MYSQL_CUSTOM_FILE}
-	rm -rf /var/lib/mysql/ib_logfile*
+		sed -i "s/.*max_allowed_packet.*/max_allowed_packet = 128M/" /etc/mysql/mysql.conf.d/mysqld.cnf
 	if [ $? = 0 ]; then
 		echo "OK"
 	else
