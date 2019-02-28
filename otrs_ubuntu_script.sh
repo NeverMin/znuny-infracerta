@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script de instalação do OTRS
+# Script de instalação do OTRS para Sistemas Operacionais Debian/Ubuntu
 #
 # Desenvolvido por Infracerta Consultoria
 # Sempre recomendamos analisar o script antes de instala-lo!
@@ -8,7 +8,7 @@
 
 #Variaveis
 # Coloque a versão do OTRS que deseja instalar na variavel abaixo
-OTRS_VERSION="6.0.10"
+OTRS_VERSION="6.0.16"
 OTRS_INSTALL_DIR="/opt/"
 REQ_PACKAGES="libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libdigest-md5-perl apache2 libapache2-mod-perl2 mysql-server libarchive-zip-perl libxml-libxml-perl libtemplate-perl libyaml-libyaml-perl libdatetime-perl libmail-imapclient-perl"
 MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d/"
@@ -38,7 +38,7 @@ MainMenu()
 # Instalação dos pacotes necessários para o OTRS
 InstallREQPKG()
 {
-	echo -n "Iniciando a instalacao as dependencias"
+	echo -n "Iniciando a instalacao as dependencias..........."
 	apt-get update 1> /dev/null && apt-get -y install ${REQ_PACKAGES}
 
 	if [ $? != 0 ]; then
@@ -46,11 +46,11 @@ InstallREQPKG()
 		echo "Ocorreu um erro, execute "bash -x nomedoscript" para mais informacoes...";exit
 	else
 		clear
-		echo "Instalacao das dependencias...........OK"
+		echo "Iniciando a instalacao as dependencias...........OK"
 	fi
 	echo -n "Pressione q para sair do script ou qualquer outra tecla para voltar ao menu inicial..."
-	read TECLA
-	if [ ${TECLA} = "q"]; then
+	read KEY
+	if [ ${KEY} = "q"]; then
 		exit
 	else
 		MainMenu
@@ -78,7 +78,7 @@ BasicCheck()
 	fi
 
 	echo -n "Pressione uma tecla pra continuar..."
-	read TECLA
+	read KEY
 
 	MainMenu
 }
