@@ -12,10 +12,10 @@ Este script faz a instalação e configuração do Software OTRS. Após rodar es
 chmod +x otrs_ubuntu_script.sh
 ```
 
-* Rode o script através do comando:
+* Em seguida rode o script através do comando:
 
 ```
-sh otrs_ubuntu_scrip.sh
+sh otrs_ubuntu_script.sh
 ```
 
 * Siga as etapas até finalizar a instalação
