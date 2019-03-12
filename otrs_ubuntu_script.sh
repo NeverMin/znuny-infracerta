@@ -171,11 +171,11 @@ InstallOTRS()
 	#Ajustando parametros necessarios do MySQL:
 	echo -n "Alterando parametros do Mysql.............."
 		sed -i "s/.*max_allowed_packet.*/#max_allowed_packet = 128M/" ${MYSQL_CONF_DIR}/mysqld.cnf
-		echo "character-set-server = utf8" > ${MYSQL_CONF_DIR}/custom.cnf
-		echo "character-set-server = utf8" > ${MYSQL_CONF_DIR}/custom.cnf
-		echo "collation-server= utf8_general_ci" > ${MYSQL_CONF_DIR}/custom.cnf
-		echo "innodb_log_file_size = 512M" > ${MYSQL_CONF_DIR}/custom.cnf
-		echo "max_allowed_packet = 128M" > ${MYSQL_CONF_DIR}/custom.cnf
+		echo "[mysqld]" > ${MYSQL_CONF_DIR}/custom.cnf
+		echo "character-set-server = utf8" >> ${MYSQL_CONF_DIR}/custom.cnf
+		echo "collation-server= utf8_general_ci" >> ${MYSQL_CONF_DIR}/custom.cnf
+		echo "innodb_log_file_size = 512M" >> ${MYSQL_CONF_DIR}/custom.cnf
+		echo "max_allowed_packet = 128M" >> ${MYSQL_CONF_DIR}/custom.cnf
 	if [ $? = 0 ]; then
 		echo "OK"
 	else
