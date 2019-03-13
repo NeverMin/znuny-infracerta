@@ -11,6 +11,9 @@ Este script faz a instalação e configuração do Software OTRS. Após rodar es
 
 * Faça o download do script para o servidor que será hospedado a aplicação
 
+```
+wget -O otrs_ubuntu_script.sh https://gitlab.com/infracerta/otrs/raw/master/otrs_ubuntu_script.sh?inline=false
+```
 * Dê permissões de execução no arquivo usando o comando abaixo:
 
 ```
