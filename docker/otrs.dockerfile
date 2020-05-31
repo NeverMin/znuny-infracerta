@@ -43,8 +43,8 @@ RUN useradd -d /opt/otrs/ -c 'OTRS user' otrs 1> /dev/null; \
     usermod -G www-data otrs 1> /dev/null; \
     /opt/otrs/bin/otrs.SetPermissions.pl --otrs-user otrs --web-group www-data /opt/otrs 1> /dev/null; \
     cd /opt/otrs/var/cron/ && for foo in *.dist; do cp $foo `basename $foo .dist`; done; \
-	chown otrs:www-data /opt/otrs/var/cron/otrs_daemon; \
+    chown otrs:www-data /opt/otrs/var/cron/otrs_daemon; \
     a2enmod headers 1> /dev/null; \
-	a2dismod mpm_event 1> /dev/null; \
-	a2enmod mpm_prefork 1> /dev/null
+    a2dismod mpm_event 1> /dev/null; \
+    a2enmod mpm_prefork 1> /dev/null
 CMD ["apachectl", "-D", "FOREGROUND"]
