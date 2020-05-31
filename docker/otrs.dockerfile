@@ -40,8 +40,8 @@ RUN tar -zxvf otrs-$OTRS_VERSION.tar.gz -C /opt 1> /dev/null; \
     ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/conf-enabled/ 1> /dev/null; \
     cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm 1> /dev/null
 RUN useradd -d /opt/otrs/ -c 'OTRS user' otrs 1> /dev/null; \
-	usermod -G www-data otrs 1> /dev/null; \
-	/opt/otrs/bin/otrs.SetPermissions.pl --otrs-user otrs --web-group www-data /opt/otrs 1> /dev/null; \
+    usermod -G www-data otrs 1> /dev/null; \
+    /opt/otrs/bin/otrs.SetPermissions.pl --otrs-user otrs --web-group www-data /opt/otrs 1> /dev/null; \
     cd /opt/otrs/var/cron/ && for foo in *.dist; do cp $foo `basename $foo .dist`; done; \
 	chown otrs:www-data /opt/otrs/var/cron/otrs_daemon; \
     a2enmod headers 1> /dev/null; \
