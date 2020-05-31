@@ -1,4 +1,4 @@
-## Repositório da Infracerta.
+## Repositório da Infracerta para OTRS.
 
 ### Conteúdo do repositório:
 
