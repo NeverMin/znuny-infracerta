@@ -58,6 +58,6 @@ FROM ticket
 INNER JOIN ticket_state ON ticket.ticket_state_id = ticket_state.id
 INNER JOIN ticket_history ON ticket_history.ticket_id = ticket.id
 
-WHERE ticket.create_time >= now() - INTERVAL 1 DAY;
+WHERE (ticket_history.state_id = "2") and (ticket_history.history_type_id = "27") and (ticket_history.change_time >= now() - INTERVAL 1 DAY);
 
 
