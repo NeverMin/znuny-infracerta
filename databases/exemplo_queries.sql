@@ -32,7 +32,7 @@ ticket.create_time AS CRIADO,
 ticket_state.name AS ESTADO
 FROM ticket INNER JOIN ticket_state ON ticket.ticket_state_id = ticket_state.id;
 
-/* Mostra todos os chamados abertos nas últimas 24 horas */
+/* Mostra todos os chamados abertos hoje */
 SELECT 
 ticket.id AS ID, 
 ticket.tn AS NUMERO, 
@@ -41,12 +41,12 @@ ticket.customer_user_id AS CLIENTE,
 ticket.create_time AS CRIADO,
 ticket_state.name AS ESTADO
 FROM ticket INNER JOIN ticket_state ON ticket.ticket_state_id = ticket_state.id
-WHERE ticket.create_time >= now() - INTERVAL 1 DAY;
+WHERE ticket.create_time >= CURDATE();
 
-/* Conta quantos chamados foram abertos nas últimas 24 horas */
-SELECT COUNT(*) FROM ticket WHERE create_time >= now() - INTERVAL 1 DAY;
+/* Conta quantos chamados foram abertos hoje */
+SELECT COUNT(*) FROM ticket WHERE create_time >= CURDATE();
 
-/* Mostra todos os chamados fechados nas últimas 24 horas */
+/* Mostra todos os chamados fechados hoje */
 SELECT 
 ticket.id AS ID, 
 ticket.tn AS NUMERO, 
@@ -58,6 +58,6 @@ FROM ticket
 INNER JOIN ticket_state ON ticket.ticket_state_id = ticket_state.id
 INNER JOIN ticket_history ON ticket_history.ticket_id = ticket.id
 
-WHERE (ticket_history.state_id = "2") and (ticket_history.history_type_id = "27") and (ticket_history.change_time >= now() - INTERVAL 1 DAY);
+WHERE (ticket_history.state_id = "2") and (ticket_history.history_type_id = "27") and (ticket_history.change_time >= CURDATE());
 
 
