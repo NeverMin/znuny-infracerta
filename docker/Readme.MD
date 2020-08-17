@@ -4,7 +4,7 @@
 
 * Docker [Install instructions](https://docs.docker.com/get-docker/)
 * Docker compose [Install instructions](https://docs.docker.com/compose/install/)
-
+* Git (optional, you can download docker-compose.yml file directly.)
 
 ### How to use:
 
