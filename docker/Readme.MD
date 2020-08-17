@@ -1,25 +1,36 @@
-## OTRS em Docker
+## OTRS in Docker
 
-### Requisitos:
+### Requirements:
 
-* Docker
-* Docker compose
+* Docker [Install instructions](https://docs.docker.com/get-docker/)
+* Docker compose [Install instructions](https://docs.docker.com/compose/install/)
 
 
-### Como usar:
+### How to use:
 
-1. baixe o conteúdo do respositório para uma pasta no servidor Docker (ex: /opt/docker):
+1. Git clone the repository:
 
 ```git clone https://gitlab.com/infracerta/otrs.git```
 
 ```cd otrs/docker```
 
-2. Execute o comando para fazer o build da imagem:
+2. Build the containers:
 
 ```docker-compose build```
 
-3. Suba os containers:
+3. Startup containers:
 
 ```docker-compose up -d```
 
-Na primeira vez que você subir os container será necessário configurar a ferramenta, igual a uma instalação feita diretamente no SO.
+Open a Web browser,  go to `http://youripaddress/otrs/installer.pl` and follow the [web installer instructions](https://doc.otrs.com/doc/manual/admin/6.0/en/html/web-installer.html). 
+
+For step 2 (Database Settings), select the option `Use an existing database for OTRS` and  fill the next screen with the following information:
+
+* User: `otrs_user`
+* Password: `Otrsuser01!`
+* Host: `otrs_database`
+* Database name: `otrs_db`
+
+Go through the next screens. If the installation succeeds you will see a screen with the root credentials.
+
+Have fun.
