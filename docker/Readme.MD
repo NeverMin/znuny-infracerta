@@ -10,7 +10,7 @@
 
 Clone the repository:
 
-```git clone https://gitlab.com/infracerta/otrs.git```
+```git clone https://gitlab.com/infracerta/otrs-infracerta.git```
 
 ```cd otrs/docker```
 
