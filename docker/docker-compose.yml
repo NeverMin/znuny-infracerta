@@ -1,35 +1,27 @@
-version: '3.3'
+version: '2'
 services:
-  otrs:
+  otrs_app:
     restart: always
-    build:
-      dockerfile: ./otrs.dockerfile
-      context: .
-    container_name: otrs
+    image: infracerta/otrs_app
+    container_name: otrs_app
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - otrsvol01:/opt/otrs
-      - otrsvol02:/etc/apache2
     ports:
       - "80:80"
+    networks:
+      - otrs_net
 
-  database:
+  otrs_database:
     restart: always
-    image: mariadb:latest
-    container_name: database
-    command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci', '--max_allowed_packet=81264640', --innodb-log-file-size=256M]
-    environment:
-       MYSQL_ROOT_PASSWORD: "Database01!"
-       MYSQL_DATABASE: "otrs_db"
-       MYSQL_USER: "otrs_user"
-       MYSQL_PASSWORD: "Otrsuser01!"
+    image: infracerta/otrs_database:latest
+    container_name: otrs_database
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - databasevol01:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks:
+      - otrs_net
 
-volumes:
-  otrsvol01:
-  otrsvol02:
-  databasevol01:
+networks:
+   otrs_net:
+     driver: bridge
