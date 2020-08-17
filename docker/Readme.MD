@@ -12,11 +12,7 @@ Clone the repository:
 
 ```git clone https://gitlab.com/infracerta/otrs-infracerta.git```
 
-```cd otrs/docker```
-
-Build the containers:
-
-```docker-compose build```
+```cd otrs/docker-infracerta```
 
 Startup containers:
 
