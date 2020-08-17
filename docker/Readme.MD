@@ -8,17 +8,17 @@
 
 ### How to use:
 
-1. Git clone the repository:
+Clone the repository:
 
 ```git clone https://gitlab.com/infracerta/otrs.git```
 
 ```cd otrs/docker```
 
-2. Build the containers:
+Build the containers:
 
 ```docker-compose build```
 
-3. Startup containers:
+Startup containers:
 
 ```docker-compose up -d```
 
