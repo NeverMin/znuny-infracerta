@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Script de instalação do OTRS para Sistemas Operacionais Debian/Ubuntu
+# Script de instalação do OTRS para o Sistema Operacional Ubuntu
 #
 # Desenvolvido por Infracerta Consultoria
 # Sempre recomendamos analisar o script antes de instala-lo!
-
-
+# Homologado para ubuntu 18.04 - usar um SO diferente pode trazer resultados inesperados.
+#
 #Variaveis
 # Coloque a versão do OTRS que deseja instalar na variavel abaixo
-OTRS_VERSION="6.0.29"
-OTRS_INSTALL_DIR="/opt/"
-REQ_PACKAGES="libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libdigest-md5-perl apache2 libapache2-mod-perl2 mysql-server libarchive-zip-perl libxml-libxml-perl libtemplate-perl libyaml-libyaml-perl libdatetime-perl libmail-imapclient-perl libmoo-perl"
-MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d"
+export OTRS_VERSION="6.0.29"
+export OTRS_INSTALL_DIR="/opt/"
+export REQ_PACKAGES="libapache2-mod-perl2 libdbd-mysql-perl libtimedate-perl libnet-dns-perl libnet-ldap-perl libio-socket-ssl-perl libpdf-api2-perl libdbd-mysql-perl libsoap-lite-perl libgd-text-perl libtext-csv-xs-perl libjson-xs-perl libgd-graph-perl libapache-dbi-perl libdigest-md5-perl apache2 libapache2-mod-perl2 mysql-server libarchive-zip-perl libxml-libxml-perl libtemplate-perl libyaml-libyaml-perl libdatetime-perl libmail-imapclient-perl libmoo-perl"
+export MYSQL_CONF_DIR="/etc/mysql/mysql.conf.d"
 
-MainMenu()
+function MainMenu()
 {
 	clear
 	echo "########################################################"
@@ -35,7 +35,7 @@ MainMenu()
 }
 
 # Instalação dos pacotes necessários para o OTRS
-InstallREQPKG()
+function InstallREQPKG()
 {
 	echo -n "Iniciando a instalacao as dependencias..........."
 	apt-get update 1> /dev/null && apt-get -y install ${REQ_PACKAGES}
@@ -57,7 +57,7 @@ InstallREQPKG()
 }
 
 # Essa etapa faz uma verificação básica no sistema
-BasicCheck()
+function BasicCheck()
 {
 	echo "Executando verificacoes basicas do sistema"
 	#Resolucao DNS
@@ -83,13 +83,15 @@ BasicCheck()
 }
 
 # Instalação e configuração do pacote OTRS
-InstallOTRS()
+function InstallOTRS()
 {
 
 	#Fazendo o download do pacote do OTRS:
 	echo -n "Baixar arquivo do OTRS....................."
 	cd ${OTRS_INSTALL_DIR}
-	wget http://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.gz 1> /dev/null
+	if [[ ! -f otrs-${OTRS_VERSION}.tar.gz ]]; then
+		wget http://ftp.otrs.org/pub/otrs/otrs-${OTRS_VERSION}.tar.gz 1> /dev/null
+	fi
 	if [ $? != 0 ]; then
 		clear
 		echo "Ocorreu um erro ao baixar o pacote do OTRS,  execute "bash -x nomedoscript" para mais informacoes...;exit"
@@ -190,7 +192,7 @@ InstallOTRS()
 	fi
 }
 
-CallCase()
+function CallCase()
 {
 	case "$OPTION" in
     1) BasicCheck
