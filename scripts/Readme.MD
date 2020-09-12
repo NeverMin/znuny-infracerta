@@ -23,7 +23,7 @@ chmod +x otrs_install_script.sh
 * Em seguida rode o script através do comando:
 
 ```
-sh otrs_install_script.sh
+bash otrs_install_script.sh
 ```
 
 * Siga as etapas até finalizar a instalação
